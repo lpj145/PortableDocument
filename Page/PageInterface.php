@@ -6,12 +6,14 @@
  * Time: 23:05
  */
 
-namespace PortableDocument\Page\Page;
+namespace Page;
 
+
+use Element\ElementInterface;
 
 interface PageInterface
 {
-    const FORMAT_A4;
     public function setMargins($leftMargin, $rightMargin, $topMargin, $botMargin);
+    public function elements(ElementInterface $element);
 
 }

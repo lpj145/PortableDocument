@@ -6,6 +6,8 @@
 namespace PortableDocument;
 
 
+use Page\PageInterface;
+
 interface DocumentInterface
 {
     /*

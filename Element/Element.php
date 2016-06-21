@@ -20,7 +20,7 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-namespace PortableDocument\Element\Element;
+namespace Element;
 
 
 class Element implements ElementInterface
@@ -48,9 +48,10 @@ class Element implements ElementInterface
         // TODO: Implement text() method.
     }
 
-    public function lineBreak( )
+
+    public function breakLine()
     {
-        // Implementar a quebra de linha com tracejados
+        // TODO: Implement breakLine() method.
     }
 
 }

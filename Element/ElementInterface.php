@@ -6,7 +6,7 @@
  * Time: 22:43
  */
 
-namespace PortableDocument\Element\Element;
+namespace Element;
 
 
 interface ElementInterface
@@ -15,5 +15,6 @@ interface ElementInterface
     public function circle($width, $height, $radius);
     public function roundRect($width, $height, $leftCorner, $rightCorner, $topCorner, $botCorner);
     public function text($text = '', $fontSize = 8);
+    public function breakLine();
 
 }

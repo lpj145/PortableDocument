@@ -7,15 +7,22 @@
  */
 
 
+require_once 'DocumentInterface.php';
+require_once 'PortableDocument.php';
 require_once 'Page/PageInterface.php';
 require_once 'Page/Page.php';
+require_once 'Element/ElementInterface.php';
+require_once 'Element/Element.php';
 
+use Page\Page;
+use PortableDocument\PortableDocument;
+use Element\Element;
 
+$page = new Page();
+$PortableDocument = new PortableDocument();
+$element = new Element();
 
-$page = new \PortableDocument\Page\Page\Page('A4');
-
-$page->setMargins(10, 10, 10, 10);
-
-var_dump($page);
+$PortableDocument->addPage( $page );
+$PortableDocument->render();
 
 echo 'Deu certo!';

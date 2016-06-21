@@ -22,6 +22,8 @@
 namespace PortableDocument;
 
 
+use Page\PageInterface;
+
 class PortableDocument implements DocumentInterface
 {
     public function __construct()

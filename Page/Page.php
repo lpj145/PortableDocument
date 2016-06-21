@@ -20,8 +20,9 @@
  */
 
 
-namespace PortableDocument\Page\Page;
+namespace Page;
 
+use Element\ElementInterface;
 
 class Page implements PageInterface
 {
@@ -48,6 +49,8 @@ class Page implements PageInterface
                 $this->width = 2480;
                 $this->height = 3508;
                 break;
+            default:
+                break;
         }
 
         $this->orientation = $orientation;
@@ -61,6 +64,11 @@ class Page implements PageInterface
         $this->topMargin  = $topMargin;
         $this->botMargin  = $botMargin;
     }
-    
+
+    public function elements(ElementInterface $element)
+    {
+        // TODO: Implement elements() method.
+    }
+
 }
 
