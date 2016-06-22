@@ -14,6 +14,7 @@ use Element\ElementInterface;
 interface PageInterface
 {
     public function setMargins($leftMargin, $rightMargin, $topMargin, $botMargin);
-    public function element(ElementInterface $element);
+    public function setElement(ElementInterface $element);
+    public function getElements();
     public function setPage(PageInterface $page);
 }

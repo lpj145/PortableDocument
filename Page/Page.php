@@ -72,14 +72,19 @@ class Page implements PageInterface
         $this->botMargin  = $botMargin;
     }
 
-    public function element(ElementInterface $element)
+    public function setElement(ElementInterface $element)
     {
         $this->containerElement[] = $element;
     }
 
+    public function getElements()
+    {
+        return $this->containerElement;
+    }
+
     public  function setPage(PageInterface $page)
     {
-        
+
     }
 
 }

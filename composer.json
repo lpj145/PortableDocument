@@ -8,5 +8,10 @@
       "name": "Marcos Dantas",
       "email": "marcos.adantas@hotmail.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "PortableDocument\\": "./"
+    }
+  }
 }
