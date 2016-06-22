@@ -6,7 +6,7 @@
  * Time: 22:43
  */
 
-namespace Element;
+namespace PortableDocument\Element;
 
 
 interface ElementInterface

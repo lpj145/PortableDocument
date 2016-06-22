@@ -6,7 +6,7 @@
  * Time: 14:51
  */
 
-namespace Element;
+namespace PortableDocument\Element;
 
 
 class Text extends Element

@@ -36,11 +36,6 @@ class PortableDocument implements DocumentInterface
         // TODO: Implement getEngine() method.
     }
 
-    public function addPage(PageInterface $page)
-    {
-        // TODO: Implement addPage() method.
-    }
-
     public function render()
     {
         // TODO: Implement render() method.

@@ -6,7 +6,7 @@
  * Time: 20:55
  */
 
-namespace Element;
+namespace PortableDocument\Element;
 
 
 class Label
