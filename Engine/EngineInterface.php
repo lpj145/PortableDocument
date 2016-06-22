@@ -1,32 +1,27 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marco
- * Date: 21/06/2016
- * Time: 15:13
- */
 
-namespace Engine;
+namespace PortableDocument\Engine;
 
+use PortableDocument\DocumentInterface;
 
 interface EngineInterface
 {
-    /*
-     * Engine provides ways to draw
+    /**
+     * @return string Returns engine name
      */
-    public function label();
-    public function text();
-    public function rect();
-    public function roundRect();
-    public function circle();
-    public function image();
+    public function getName();
 
-
-    /*
-     * output
+    /**
+     * @return mixed
      */
-    public function output();
-    public function setStyle();
-    public function addPage();
-    public function setPage();
+    public function getEngine();
+
+    public function render(DocumentInterface $document);
+
+    /**
+     * @param string $filename
+     * @throws \RuntimeException
+     * @return bool
+     */
+    public function save($filename);
 }

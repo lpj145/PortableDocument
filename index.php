@@ -1,21 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marco
- * Date: 20/06/2016
- * Time: 23:43
- */
-
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Page\Page;
+use PortableDocument\Engine\FPDF as FPDFEngine;
+use PortableDocument\Page\Page;
+use PortableDocument\PortableDocument;
+
+$engine = new FPDFEngine();
+$document = new PortableDocument($engine);
 
 $page = new Page();
+$page->setFont(new \PortableDocument\Style\Font('Arial', 10));
+$page->addElement(new \PortableDocument\Element\Paragraph('First text'));
 
-$page->setElement( new Rect(20, 50, 0, 10, 10) );
-$page->setElement( new Text('Aqui o seu texto') );
+$document->addPage($page);
 
-
-var_dump($page->getElements());
-
+$document->save(__DIR__ . '/test-document.pdf');

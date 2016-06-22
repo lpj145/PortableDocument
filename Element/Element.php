@@ -22,29 +22,63 @@
 
 namespace PortableDocument\Element;
 
+use PortableDocument\Style\StyleInterface;
 
-class Element implements ElementInterface
+class Element implements ElementInterface, PositionInterface, StylishInterface
 {
-    public $positionX;
-    public $positionY;
-    //For drawBox
-    public $height;
-    public $width;
-    public $radius;
-
-    public $id;
-
-    /*****************************************************************/
-    /***************** Not Touch area ********************************/
-    /*****************************************************************/
-
-    /*
-     * @return $positionX
-     * @return $positionY
+    /**
+     * @var float
      */
-    public function getPosition( )
+    protected $xPosition;
+    /**
+     * @var float
+     */
+    protected $yPosition;
+    /**
+     * @var StyleInterface
+     */
+    protected $style;
+
+    /**
+     * @param float $horizontal
+     * @param float $vertical
+     */
+    public function setPosition($horizontal, $vertical)
     {
-        return [ $this->positionX, $this->positionY ];
+        $this->xPosition = (float) $horizontal;
+        $this->yPosition = (float) $vertical;
+    }
+
+    /**
+     * @param StyleInterface $style
+     */
+    public function setStyle(StyleInterface $style)
+    {
+        $this->style = $style;
+    }
+
+    /**
+     * @return StyleInterface
+     */
+    public function getStyle()
+    {
+        return $this->style;
+    }
+
+    /**
+     * @return float
+     */
+    public function getXPosition()
+    {
+        return $this->xPosition;
+    }
+
+    /**
+     * @return float
+     */
+    public function getYPosition()
+    {
+        return $this->yPosition;
     }
 
 }

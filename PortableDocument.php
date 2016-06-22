@@ -21,29 +21,51 @@
 
 namespace PortableDocument;
 
-
-use Page\PageInterface;
+use PortableDocument\Engine\EngineInterface;
+use PortableDocument\Page\PageInterface;
 
 class PortableDocument implements DocumentInterface
 {
-    public function __construct()
+    /**
+     * @var EngineInterface
+     */
+    private $engine;
+    /**
+     * @var array
+     */
+    private $pages;
+
+    public function __construct(EngineInterface $engine)
     {
-        
+        $this->engine = $engine;
+        $this->pages = [];
     }
 
+    /**
+     * @return EngineInterface
+     */
     public function getEngine()
     {
-        // TODO: Implement getEngine() method.
+        return $this->engine;
     }
 
-    public function render()
+    public function addPage(PageInterface $page)
     {
-        // TODO: Implement render() method.
+        $page->setDocument($this);
+        $this->pages[] = $page;
+    }
+
+    /**
+     * @return PageInterface[]
+     */
+    public function getPages()
+    {
+        return $this->pages;
     }
 
     public function save($filename)
     {
-        // TODO: Implement save() method.
+        $this->engine->render($this);
+        $this->engine->save($filename);
     }
-
 }

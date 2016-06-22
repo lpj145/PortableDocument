@@ -1,76 +1,68 @@
 <?php
-/*
- * Require FPDF class
- */
 
-namespace Engine;
+namespace PortableDocument\Engine;
 
-
-$fpdfClass = 'fpdf.php';
-
-if ( file_exists($fpdfClass)) {
-    require_once $fpdfClass;
-} else {
-    die('Não foi encontrada a lib fpdf');
-}
-
+use PortableDocument\DocumentInterface;
+use PortableDocument\Element\ElementInterface;
+use PortableDocument\Page\PageInterface;
 
 class FPDF implements EngineInterface
 {
-    public function label()
-    {
-        // TODO: Implement label() method.
-    }
-
-    public function text()
-    {
-        // TODO: Implement text() method.
-    }
-
-    public function rect()
-    {
-        // TODO: Implement rect() method.
-    }
-
-    public function roundRect()
-    {
-        // TODO: Implement roundRect() method.
-    }
-
-    public function circle()
-    {
-        // TODO: Implement circle() method.
-    }
-
-    public function image()
-    {
-        // TODO: Implement image() method.
-    }
-
-
-    /*
-     * Dont touch area
+    /**
+     * @var \FPDF
      */
+    private $engine;
 
-    public function output()
+    /**
+     * FPDF constructor.
+     * @param \FPDF $engine
+     */
+    public function __construct(\FPDF $engine = null)
     {
-        // TODO: Implement output() method.
+        if (is_null($engine)) {
+            $engine = new \FPDF();
+        }
+        $this->engine = $engine;
     }
 
-
-    public function setStyle()
+    public function getEngine()
     {
-        // TODO: Implement setStyle() method.
+        return $this->engine;
     }
 
-    public function addPage()
+    public function getName()
     {
-        // TODO: Implement addPage() method.
+        return 'FPDF';
     }
 
-    public function setPage()
+    public function render(DocumentInterface $document)
     {
-        
+        foreach ($document->getPages() as $page) {
+            $this->renderPage($page);
+        }
     }
 
+    public function save($filename)
+    {
+        $directory = dirname($filename);
+        if (!is_writable($directory)) {
+            throw new \RuntimeException("The directory ($directory) is not writable");
+        }
+        $this->engine->Output('F', $filename);
+        return true;
+    }
+
+    private function renderPage(PageInterface $page)
+    {
+        $this->renderElement($page);
+        foreach ($page->getElements() as $element) {
+            $this->renderElement($element);
+        }
+    }
+
+    private function renderElement(ElementInterface $element)
+    {
+        $command = Command::create($element, $this);
+        $command->render($element);
+    }
 }

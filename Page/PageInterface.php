@@ -1,20 +1,43 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marco
- * Date: 20/06/2016
- * Time: 23:05
- */
 
-namespace Page;
+namespace PortableDocument\Page;
 
+use PortableDocument\DocumentInterface;
+use PortableDocument\Element\Element;
+use PortableDocument\Element\ElementInterface;
+use PortableDocument\Element\StylishInterface;
+use PortableDocument\Style\Font;
 
-use Element\ElementInterface;
-
-interface PageInterface
+interface PageInterface extends ElementInterface, StylishInterface
 {
-    public function setMargins($leftMargin, $rightMargin, $topMargin, $botMargin);
-    public function setElement(ElementInterface $element);
+    /**
+     * @return Size
+     */
+    public function getSize();
+
+    /**
+     * @return Orientation
+     */
+    public function getOrientation();
+
+    /**
+     * @return Font
+     */
+    public function getFont();
+    /**
+     * @param DocumentInterface $document
+     * @return PageInterface
+     */
+    public function setDocument(DocumentInterface $document);
+
+    /**
+     * @param Element $element
+     * @return PageInterface
+     */
+    public function addElement(Element $element);
+
+    /**
+     * @return ElementInterface[]
+     */
     public function getElements();
-    public function setPage(PageInterface $page);
 }

@@ -5,17 +5,30 @@
 
 namespace PortableDocument;
 
-
-use Page\PageInterface;
+use PortableDocument\Engine\EngineInterface;
+use PortableDocument\Page\PageInterface;
 
 interface DocumentInterface
 {
-    /*
-     * return EngineInterface
-    */
+    /**
+     * @return EngineInterface
+     */
     public function getEngine();
-    public function addPage( PageInterface $page );
-    public function render();
-    public function save( $filename );
 
+    /**
+     * @param PageInterface $page
+     * @return bool
+     */
+    public function addPage(PageInterface $page);
+
+    /**
+     * @return PageInterface[]
+     */
+    public function getPages();
+
+    /**
+     * @param string $filename
+     * @return bool
+     */
+    public function save($filename);
 }
