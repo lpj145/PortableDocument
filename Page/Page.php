@@ -35,6 +35,14 @@ class Page implements PageInterface
     private $topMargin;
     private $botMargin;
 
+    private $cursorX;
+    private $cursorY;
+
+    /*
+     * Page containt strucutre Elements
+     */
+    private $containerElement = array();
+
     /*
      * Definição da folha
      * Por padrão adota folha A4
@@ -54,7 +62,6 @@ class Page implements PageInterface
         }
 
         $this->orientation = $orientation;
-
     }
 
     public function setMargins($leftMargin = 0, $rightMargin = 0, $topMargin = 0, $botMargin = 0)
@@ -65,10 +72,14 @@ class Page implements PageInterface
         $this->botMargin  = $botMargin;
     }
 
-    public function elements(ElementInterface $element)
+    public function element(ElementInterface $element)
     {
-        // TODO: Implement elements() method.
+        $this->containerElement[] = $element;
+    }
+
+    public  function setPage(PageInterface $page)
+    {
+        
     }
 
 }
-

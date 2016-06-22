@@ -11,10 +11,5 @@ namespace Element;
 
 interface ElementInterface
 {
-    public function rect($width, $height);
-    public function circle($width, $height, $radius);
-    public function roundRect($width, $height, $leftCorner, $rightCorner, $topCorner, $botCorner);
-    public function text($text = '', $fontSize = 8);
-    public function breakLine();
 
 }

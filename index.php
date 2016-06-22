@@ -13,16 +13,17 @@ require_once 'Page/PageInterface.php';
 require_once 'Page/Page.php';
 require_once 'Element/ElementInterface.php';
 require_once 'Element/Element.php';
+require_once 'Element/Rect.php';
+require_once 'Element/Text.php';
 
+use Element\Rect;
+use Element\Text;
 use Page\Page;
-use PortableDocument\PortableDocument;
-use Element\Element;
+
+$container = [];
 
 $page = new Page();
-$PortableDocument = new PortableDocument();
-$element = new Element();
 
-$PortableDocument->addPage( $page );
-$PortableDocument->render();
+$page->element( new Rect(20, 50, 0, 10, 10) );
+$page->element( new Text('Aqui o seu texto') );
 
-echo 'Deu certo!';

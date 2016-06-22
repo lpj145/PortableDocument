@@ -1,0 +1,12 @@
+{
+  "name": "lpj145/PortableDocument",
+  "description": "Generator PortableDocument PHP",
+  "minimum-stability": "dev",
+  "license": "lpj145",
+  "authors": [
+    {
+      "name": "Marcos Dantas",
+      "email": "marcos.adantas@hotmail.com"
+    }
+  ]
+}

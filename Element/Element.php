@@ -25,33 +25,26 @@ namespace Element;
 
 class Element implements ElementInterface
 {
-    private $positionX;
-    private $positionY;
+    public $positionX;
+    public $positionY;
+    //For drawBox
+    public $height;
+    public $width;
+    public $radius;
 
-    public function rect($width, $height)
+    public $id;
+
+    /*****************************************************************/
+    /***************** Not Touch area ********************************/
+    /*****************************************************************/
+
+    /*
+     * @return $positionX
+     * @return $positionY
+     */
+    public function getPosition( )
     {
-        // TODO: Implement rect() method.
-    }
-
-    public function circle($width, $height, $radius)
-    {
-        // TODO: Implement circle() method.
-    }
-
-    public  function roundRect($width, $height, $leftCorner, $rightCorner, $topCorner, $botCorner)
-    {
-        // TODO: Implement roundRect() method.
-    }
-
-    public function text($text = '', $fontSize = 8)
-    {
-        // TODO: Implement text() method.
-    }
-
-
-    public function breakLine()
-    {
-        // TODO: Implement breakLine() method.
+        return [ $this->positionX, $this->positionY ];
     }
 
 }
